@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZlt{}p\PYGZgt{}
+  \PYGZlt{}strong\PYGZgt{}Title:\PYGZlt{}/strong\PYGZgt{}
+  \PYGZlt{}\PYGZpc{}\PYG{o}{=} @post.title \PYGZpc{}\PYGZgt{}
+\PYGZlt{}/p\PYGZgt{}
+
+\PYGZlt{}p\PYGZgt{}
+  \PYGZlt{}strong\PYGZgt{}Email:\PYGZlt{}/strong\PYGZgt{}
+  \PYGZlt{}\PYGZpc{} \PYG{k}{if} @post.user \PYGZpc{}\PYGZgt{}
+    \PYGZlt{}\PYGZpc{}\PYG{o}{=} link\PYGZus{}to \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}\PYGZob{}@post.user.email\PYGZcb{}\PYGZdq{}}, @post.user \PYGZpc{}\PYGZgt{}
+  \PYGZlt{}\PYGZpc{} \PYG{k}{else} \PYGZpc{}\PYGZgt{}
+    Anonymous
+  \PYGZlt{}\PYGZpc{} end \PYGZpc{}\PYGZgt{}
+\PYGZlt{}/p\PYGZgt{}
+
+\PYGZlt{}p\PYGZgt{}
+  \PYGZlt{}\PYGZpc{}\PYG{o}{=} @post.body \PYGZpc{}\PYGZgt{}
+\PYGZlt{}/p\PYGZgt{}
+\end{Verbatim}

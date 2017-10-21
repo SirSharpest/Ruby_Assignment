@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{User} \PYG{o}{\PYGZlt{}} \PYG{n+no}{ApplicationRecord}
+  \PYG{n}{has\PYGZus{}many} \PYG{l+s+ss}{:posts}\PYG{p}{,}
+	   \PYG{l+s+ss}{dependent}\PYG{p}{:} \PYG{l+s+ss}{:destroy}
+\PYG{k}{end}
+\end{Verbatim}

@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{CreateUsers} \PYG{o}{\PYGZlt{}} \PYG{n+no}{ActiveRecord}\PYG{o}{::}\PYG{n+no}{Migration}\PYG{o}{[}\PYG{l+m+mi}{5}\PYG{o}{.}\PYG{l+m+mi}{1}\PYG{o}{]}
+  \PYG{k}{def} \PYG{n+nf}{change}
+    \PYG{n}{create\PYGZus{}table} \PYG{l+s+ss}{:users} \PYG{k}{do} \PYG{o}{|}\PYG{n}{t}\PYG{o}{|}
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{string} \PYG{l+s+ss}{:surname}\PYG{p}{,} \PYG{l+s+ss}{null}\PYG{p}{:}\PYG{k+kp}{false}
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{string} \PYG{l+s+ss}{:forename}\PYG{p}{,} \PYG{l+s+ss}{null}\PYG{p}{:}\PYG{k+kp}{false}
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{string} \PYG{l+s+ss}{:phone}
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{integer} \PYG{l+s+ss}{:grad\PYGZus{}year}\PYG{p}{,} \PYG{l+s+ss}{null}\PYG{p}{:}\PYG{k+kp}{false}
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{boolean} \PYG{l+s+ss}{:jobs}\PYG{p}{,} \PYG{l+s+ss}{default}\PYG{p}{:} \PYG{k+kp}{false}
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{string} \PYG{l+s+ss}{:email}\PYG{p}{,} \PYG{l+s+ss}{null}\PYG{p}{:}\PYG{k+kp}{false}
+
+      \PYG{n}{t}\PYG{o}{.}\PYG{n}{timestamps}
+    \PYG{k}{end}
+
+    \PYG{l+s+ss}{add\PYGZus{}index}\PYG{p}{:}\PYG{n}{users}\PYG{p}{,}\PYG{l+s+ss}{:surname}
+    \PYG{l+s+ss}{add\PYGZus{}index}\PYG{p}{:}\PYG{n}{users}\PYG{p}{,}\PYG{l+s+ss}{:email}
+
+  \PYG{k}{end}
+\PYG{k}{end}
+\end{Verbatim}

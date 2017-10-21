@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}field\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{}= form.label :email \PYGZpc{}\PYGZgt{}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{}= if post.user
+    text\PYGZus{}field\PYGZus{}tag \PYGZsq{}email\PYGZsq{},post.user.email
+  else
+    text\PYGZus{}field\PYGZus{}tag \PYGZsq{}email\PYGZsq{}
+  end \PYGZpc{}\PYGZgt{}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}field\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{}= form.label :body \PYGZpc{}\PYGZgt{}\PYG{p}{\PYGZlt{}}\PYG{n+nt}{br}\PYG{p}{\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{}= form.text\PYGZus{}area :body \PYGZpc{}\PYGZgt{}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

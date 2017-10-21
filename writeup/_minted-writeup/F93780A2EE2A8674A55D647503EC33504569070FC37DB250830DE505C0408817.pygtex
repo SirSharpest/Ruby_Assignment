@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+rails g scaffold Post title
+rails g scaffold Users surname forename phone grad\PYGZus{}year:integer jobs:boolean email
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{rails} \PYG{n}{g} \PYG{n}{scaffold}
+\PYG{n}{rails} \PYG{n}{g} \PYG{n}{scaffold}
+\end{Verbatim}

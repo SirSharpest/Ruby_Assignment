@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+rails g migration add\PYGZus{}toby\PYGZus{}to\PYGZus{}posts body:text
+\end{Verbatim}

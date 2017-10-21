@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+rails g scaffold
+rails g scaffold
+\end{Verbatim}

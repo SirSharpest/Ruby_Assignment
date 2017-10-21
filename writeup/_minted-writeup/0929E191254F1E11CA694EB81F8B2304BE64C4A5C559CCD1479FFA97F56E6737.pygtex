@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZlt{}}\PYG{n+nb}{p} \PYG{n+nb}{id}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}notice\PYGZdq{}}\PYG{o}{\PYGZgt{}\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= notice \PYGZpc{}\PYGZgt{}\PYGZlt{}/p\PYGZgt{}}
+
+\PYG{l+s+sx}{\PYGZlt{}p\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}strong\PYGZgt{}Title:\PYGZlt{}/strong\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}\PYGZpc{}=} \PYG{n+nv+vi}{@post}\PYG{o}{.}\PYG{n}{title} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{\PYGZlt{}/p\PYGZgt{}}
+
+\PYG{o}{\PYGZlt{}}\PYG{n+nb}{p}\PYG{o}{\PYGZgt{}}
+  \PYG{o}{\PYGZlt{}}\PYG{n}{strong}\PYG{o}{\PYGZgt{}}\PYG{l+s+ss}{Email}\PYG{p}{:}\PYG{o}{\PYGZlt{}}\PYG{l+s+sr}{/strong\PYGZgt{}}
+\PYG{l+s+sr}{  \PYGZlt{}\PYGZpc{} if @post.user \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sr}{    \PYGZlt{}\PYGZpc{}= link\PYGZus{}to \PYGZdq{}}\PYG{l+s+si}{\PYGZsh{}\PYGZob{}}\PYG{n+nv+vi}{@post}\PYG{o}{.}\PYG{n}{user}\PYG{o}{.}\PYG{n}{email}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sr}{\PYGZdq{}, @post.user \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sr}{  \PYGZlt{}\PYGZpc{} else \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sr}{    Anonymous}
+\PYG{l+s+sr}{  \PYGZlt{}\PYGZpc{} end \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sr}{\PYGZlt{}/}\PYG{n+nb}{p}\PYG{o}{\PYGZgt{}}
+
+\PYG{o}{\PYGZlt{}}\PYG{n+nb}{p}\PYG{o}{\PYGZgt{}}
+  \PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= @post.body \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{\PYGZlt{}/p\PYGZgt{}}
+
+\PYG{l+s+sx}{\PYGZlt{}\PYGZpc{}=} \PYG{n}{link\PYGZus{}to} \PYG{l+s+s1}{\PYGZsq{}Edit\PYGZsq{}}\PYG{p}{,} \PYG{n}{edit\PYGZus{}post\PYGZus{}path}\PYG{p}{(}\PYG{n+nv+vi}{@post}\PYG{p}{)} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{} |}
+\PYG{l+s+sx}{\PYGZlt{}\PYGZpc{}= link\PYGZus{}to \PYGZsq{}Back\PYGZsq{}, posts\PYGZus{}path \PYGZpc{}\PYGZgt{}}
+\end{Verbatim}

@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{strong}\PYG{p}{\PYGZgt{}}Title:\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{strong}\PYG{p}{\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{}= @post.title \PYGZpc{}\PYGZgt{}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{strong}\PYG{p}{\PYGZgt{}}Email:\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{strong}\PYG{p}{\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{} if @post.user \PYGZpc{}\PYGZgt{}
+    \PYG{err}{\PYGZlt{}}\PYGZpc{}= link\PYGZus{}to \PYGZdq{}\PYGZsh{}\PYGZob{}@post.user.email\PYGZcb{}\PYGZdq{}, @post.user \PYGZpc{}\PYGZgt{}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{} else \PYGZpc{}\PYGZgt{}
+    Anonymous
+  \PYG{err}{\PYGZlt{}}\PYGZpc{} end \PYGZpc{}\PYGZgt{}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}}\PYGZpc{}= @post.body \PYGZpc{}\PYGZgt{}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

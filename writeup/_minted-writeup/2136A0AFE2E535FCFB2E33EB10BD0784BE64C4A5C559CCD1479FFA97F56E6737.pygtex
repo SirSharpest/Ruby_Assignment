@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZlt{}}\PYG{n}{div} \PYG{n}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}field\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+  \PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= form.label :email \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}\PYGZpc{}=} \PYG{k}{if} \PYG{n}{post}\PYG{o}{.}\PYG{n}{user}
+    \PYG{n}{text\PYGZus{}field\PYGZus{}tag} \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}\PYG{p}{,}\PYG{n}{post}\PYG{o}{.}\PYG{n}{user}\PYG{o}{.}\PYG{n}{email}
+  \PYG{k}{else}
+    \PYG{n}{text\PYGZus{}field\PYGZus{}tag} \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}
+  \PYG{k}{end} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{\PYGZlt{}/div\PYGZgt{}}
+
+\PYG{o}{\PYGZlt{}}\PYG{n}{div} \PYG{n}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}field\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+  \PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= form.label :body \PYGZpc{}\PYGZgt{}\PYGZlt{}br\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}\PYGZpc{}=} \PYG{n}{form}\PYG{o}{.}\PYG{n}{text\PYGZus{}area} \PYG{l+s+ss}{:body} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{\PYGZlt{}/div\PYGZgt{}}
+\end{Verbatim}

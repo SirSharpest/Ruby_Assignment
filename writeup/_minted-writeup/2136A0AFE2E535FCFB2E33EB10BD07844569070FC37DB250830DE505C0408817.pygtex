@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZlt{}div \PYG{n+nv}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}field\PYGZdq{}}\PYGZgt{}
+  \PYGZlt{}\PYGZpc{}\PYG{o}{=} form.label :email \PYGZpc{}\PYGZgt{}
+  \PYGZlt{}\PYGZpc{}\PYG{o}{=} \PYG{k}{if} post.user
+    text\PYGZus{}field\PYGZus{}tag \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}},post.user.email
+  \PYG{k}{else}
+    text\PYGZus{}field\PYGZus{}tag \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}
+  end \PYGZpc{}\PYGZgt{}
+\PYGZlt{}/div\PYGZgt{}
+
+\PYGZlt{}div \PYG{n+nv}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}field\PYGZdq{}}\PYGZgt{}
+  \PYGZlt{}\PYGZpc{}\PYG{o}{=} form.label :body \PYGZpc{}\PYGZgt{}\PYGZlt{}br\PYGZgt{}
+  \PYGZlt{}\PYGZpc{}\PYG{o}{=} form.text\PYGZus{}area :body \PYGZpc{}\PYGZgt{}
+\PYGZlt{}/div\PYGZgt{}
+\end{Verbatim}

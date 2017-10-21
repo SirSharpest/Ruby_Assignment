@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= form\PYGZus{}with(model: post, local: true) do |form| \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}\PYGZpc{} if post.errors.any? \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{    \PYGZlt{}div id=}\PYG{l+s+s2}{\PYGZdq{}error\PYGZus{}explanation\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+      \PYG{o}{\PYGZlt{}}\PYG{n}{h2}\PYG{o}{\PYGZgt{}\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= pluralize(post.errors.count, \PYGZdq{}error\PYGZdq{}) \PYGZpc{}\PYGZgt{} prohibited this post from being saved:\PYGZlt{}/h2\PYGZgt{}}
+
+\PYG{l+s+sx}{      \PYGZlt{}ul\PYGZgt{}}
+\PYG{l+s+sx}{      \PYGZlt{}\PYGZpc{} post.errors.full\PYGZus{}messages.each do |message| \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{	\PYGZlt{}li\PYGZgt{}\PYGZlt{}\PYGZpc{}=} \PYG{n}{message} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}\PYGZlt{}/li\PYGZgt{}}
+      \PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{} end \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{      \PYGZlt{}/ul\PYGZgt{}}
+    \PYG{o}{\PYGZlt{}}\PYG{l+s+sr}{/div\PYGZgt{}}
+\PYG{l+s+sr}{  \PYGZlt{}\PYGZpc{} end \PYGZpc{}\PYGZgt{}}
+
+\PYG{l+s+sr}{  \PYGZlt{}div class=\PYGZdq{}field\PYGZdq{}\PYGZgt{}}
+\PYG{l+s+sr}{    \PYGZlt{}\PYGZpc{}= form.label :title \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sr}{    \PYGZlt{}\PYGZpc{}= form.text\PYGZus{}field :title, id: :post\PYGZus{}title \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sr}{  \PYGZlt{}/}\PYG{n}{div}\PYG{o}{\PYGZgt{}}
+
+  \PYG{o}{\PYGZlt{}}\PYG{n}{div} \PYG{n}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}field\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+    \PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= form.label :email \PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{    \PYGZlt{}\PYGZpc{}=} \PYG{k}{if} \PYG{n}{post}\PYG{o}{.}\PYG{n}{user}
+      \PYG{n}{text\PYGZus{}field\PYGZus{}tag} \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}\PYG{p}{,}\PYG{n}{post}\PYG{o}{.}\PYG{n}{user}\PYG{o}{.}\PYG{n}{email}
+    \PYG{k}{else}
+      \PYG{n}{text\PYGZus{}field\PYGZus{}tag} \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}
+    \PYG{k}{end} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}/div\PYGZgt{}}
+
+  \PYG{o}{\PYGZlt{}}\PYG{n}{div} \PYG{n}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}field\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+    \PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{}= form.label :body \PYGZpc{}\PYGZgt{}\PYGZlt{}br\PYGZgt{}}
+\PYG{l+s+sx}{    \PYGZlt{}\PYGZpc{}=} \PYG{n}{form}\PYG{o}{.}\PYG{n}{text\PYGZus{}area} \PYG{l+s+ss}{:body} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}/div\PYGZgt{}}
+
+  \PYG{o}{\PYGZlt{}}\PYG{n}{div} \PYG{n}{class}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}actions\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+    \PYG{o}{\PYGZlt{}\PYGZpc{}=} \PYG{n}{form}\PYG{o}{.}\PYG{n}{submit} \PYG{l+s+sx}{\PYGZpc{}\PYGZgt{}}
+\PYG{l+s+sx}{  \PYGZlt{}/div\PYGZgt{}}
+\PYG{o}{\PYGZlt{}}\PYG{l+s+sx}{\PYGZpc{} end }\PYG{o}{\PYGZpc{}\PYGZgt{}}
+\end{Verbatim}
