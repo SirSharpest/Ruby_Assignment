@@ -17,7 +17,7 @@
       <% @users.each do |user| %>
           <tr>
             <td><%= user.surname %></td>
-            <td><%= user.forename %></td>
+            <td><%= user.firstname %></td>
             <td><%= user.email %></td>
             <td><%= user.grad_year %></td>
             <td><%= link_to(image_tag('eye.jpg', alt: 'Show',

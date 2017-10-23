@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{.}\PYG{n+nc}{navigation} \PYG{p}{\PYGZob{}}
+
+  \PYG{err}{a} \PYG{err}{\PYGZob{}}
+    \PYG{k}{color}\PYG{p}{:} \PYG{l+m+mh}{\PYGZsh{}aa1111}\PYG{p}{;}
+    \PYG{k}{text\PYGZhy{}decoration}\PYG{p}{:} \PYG{k+kc}{none}\PYG{p}{;}
+    \PYG{k}{font\PYGZhy{}weight}\PYG{p}{:} \PYG{k+kc}{bold}\PYG{p}{;}
+    \PYG{k}{margin}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{padding\PYGZhy{}left}\PYG{p}{:} \PYG{l+m+mf}{0.5}\PYG{k+kt}{em}\PYG{p}{;}
+    \PYG{k}{padding\PYGZhy{}right}\PYG{p}{:} \PYG{l+m+mf}{0.5}\PYG{k+kt}{em}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{p}{.}\PYG{n+nc}{selected} \PYG{p}{\PYGZob{}}
+    \PYG{k}{background\PYGZhy{}color}\PYG{p}{:} \PYG{l+m+mh}{\PYGZsh{}C5F1F9}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n+nt}{a}\PYG{p}{:}\PYG{n+nd}{hover}\PYG{o}{,}
+  \PYG{n+nt}{a}\PYG{p}{:}\PYG{n+nd}{active}\PYG{o}{,}
+  \PYG{n+nt}{a}\PYG{p}{.}\PYG{n+nc}{here}\PYG{p}{:}\PYG{n+nd}{link}\PYG{o}{,}
+  \PYG{n+nt}{a}\PYG{p}{.}\PYG{n+nc}{here}\PYG{p}{:}\PYG{n+nd}{visited} \PYG{p}{\PYGZob{}}
+    \PYG{k}{color}\PYG{p}{:} \PYG{l+m+mh}{\PYGZsh{}C811D8}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

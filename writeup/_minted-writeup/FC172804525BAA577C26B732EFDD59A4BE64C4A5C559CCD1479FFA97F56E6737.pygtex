@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{primary}\PYG{o}{.}\PYG{n}{item} \PYG{l+s+ss}{:home}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Home\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/home\PYGZsq{}}\PYG{p}{,} \PYG{l+s+ss}{highlights\PYGZus{}on}\PYG{p}{:} \PYG{l+s+sr}{/(\PYGZca{}\PYGZbs{}/\PYGZdl{})|(\PYGZca{}\PYGZbs{}/home\PYGZdl{})/}
+\PYG{n}{primary}\PYG{o}{.}\PYG{n}{item} \PYG{l+s+ss}{:jobs}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Jobs\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/jobs\PYGZsq{}}
+\PYG{n}{primary}\PYG{o}{.}\PYG{n}{item} \PYG{l+s+ss}{:profile}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Profile\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/profile\PYGZsq{}}\PYG{p}{,} \PYG{k}{if}\PYG{p}{:} \PYG{n+no}{Proc}\PYG{o}{.}\PYG{n}{new} \PYG{p}{\PYGZob{}} \PYG{n}{is\PYGZus{}admin?} \PYG{p}{\PYGZcb{}}
+\PYG{n}{primary}\PYG{o}{.}\PYG{n}{item} \PYG{l+s+ss}{:users}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Users\PYGZsq{}}\PYG{p}{,} \PYG{n}{users\PYGZus{}path}\PYG{p}{,} \PYG{k}{if}\PYG{p}{:} \PYG{n+no}{Proc}\PYG{o}{.}\PYG{n}{new} \PYG{p}{\PYGZob{}} \PYG{n}{is\PYGZus{}admin?} \PYG{p}{\PYGZcb{}}
+\PYG{n}{primary}\PYG{o}{.}\PYG{n}{item} \PYG{l+s+ss}{:broadcasts}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Broadcasts\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/broadcasts\PYGZsq{}}\PYG{p}{,} \PYG{k}{if}\PYG{p}{:} \PYG{n+no}{Proc}\PYG{o}{.}\PYG{n}{new} \PYG{p}{\PYGZob{}} \PYG{n}{is\PYGZus{}admin?} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

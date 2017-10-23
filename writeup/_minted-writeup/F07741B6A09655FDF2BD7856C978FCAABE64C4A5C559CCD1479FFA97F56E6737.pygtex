@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Make is\PYGZus{}admin? a helper method available to view templates}
+\PYG{n}{helper\PYGZus{}method} \PYG{l+s+ss}{:is\PYGZus{}admin?}
+
+\PYG{k+kp}{protected}
+
+\PYG{c+c1}{\PYGZsh{} Is the caller an admin user? Currently everyone is!}
+\PYG{c+c1}{\PYGZsh{} @return true if admin user else false}
+\PYG{k}{def} \PYG{n+nf}{is\PYGZus{}admin?}
+  \PYG{k+kp}{true}
+\PYG{k}{end}
+\end{Verbatim}

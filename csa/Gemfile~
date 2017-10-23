@@ -55,5 +55,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Adding tabbed navigation
 gem 'simple-navigation'
-# Adding paginate
-gem 'will_paginate'

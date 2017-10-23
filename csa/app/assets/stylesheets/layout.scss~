@@ -14,8 +14,8 @@ h1 {
 
 /* Application layout classes */
 .header {
-  height: 8em;
-  background-color: #AEF1aa;
+  height: 5em;
+  background-color: #115859;
   width: 100%;
 }
 
@@ -24,7 +24,7 @@ h1 {
 }
 
 .flash_notice {
-  color: #aaaaaa;
+  color: #ccffaa;
 }
 
 .flash_error {
@@ -57,7 +57,7 @@ h1 {
   }
 
   a {
-    color: #aa1111;
+    color: #aaaaaa;
     text-decoration: none;
     font-weight: bold;
     margin: 0;
@@ -73,7 +73,7 @@ h1 {
   a:active,
   a.here:link,
   a.here:visited {
-    color: #C811D8;
+    color: #888888;
   }
 
   a.here:link,
@@ -98,7 +98,7 @@ h1 {
 
   p {
     display: block;
-    color: #BB00BB;
+    color: #C5F1F9;
     padding-bottom: 0.5em;
     font-size: 1.25em;
   }

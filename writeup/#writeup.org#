@@ -76,7 +76,6 @@ end
     primary.item :broadcasts, 'Broadcasts', '/broadcasts', if: Proc.new { is_admin? }
 #+END_SRC
 
-** Pagination 
 ** Application Controller
 #+CAPTION: x
 #+BEGIN_SRC RUBY
@@ -116,7 +115,8 @@ end
   }
 #+END_SRC
 
-   
+
+
 * TODO MVC Model 
   
 ** TODO UML Diagram
@@ -152,7 +152,7 @@ Posts "*" -- "0..1" Users
 ** TODO Views
 ** TODO Controls
 
-
+   
 * Database
 
 ** TODO Database location
