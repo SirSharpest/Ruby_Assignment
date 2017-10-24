@@ -77,6 +77,24 @@ end
 #+END_SRC
 
 ** Pagination 
+#+CAPTION: Modifying the user controller
+#+BEGIN_SRC RUBY
+  # GET /users
+  # GET /users.json
+  def index
+    @users = User.paginate(page: params[:page],
+                           per_page: params[:per_page])
+               .order('surname, forename')
+  end
+
+...
+
+  def set_current_page
+    @current_page = params[:page] || 1
+  end
+#+END_SRC
+
+
 ** Application Controller
 #+CAPTION: x
 #+BEGIN_SRC RUBY
@@ -90,6 +108,7 @@ end
   def is_admin?
     true
   end
+
 #+END_SRC
 
 ** Layout.scss

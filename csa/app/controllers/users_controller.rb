@@ -1,5 +1,6 @@
 # Handles incoming user account HTTP requests
 # @author Chris Loftus
+# @modifier Nathan Hughes 
 class UsersController < ApplicationController
   before_action :set_current_page, except: [:index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page],
                            per_page: params[:per_page])
-                 .order('surname, forename')
+               .order('surname, forename')
   end
 
   # GET /users/1

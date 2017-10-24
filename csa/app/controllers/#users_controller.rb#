@@ -1,5 +1,6 @@
 # Handles incoming user account HTTP requests
 # @author Chris Loftus
+# @modifier Nathan Hughes 
 class UsersController < ApplicationController
   before_action :set_current_page, except: [:index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-  end
+    end
 
   # GET /users/1/edit
   def edit
