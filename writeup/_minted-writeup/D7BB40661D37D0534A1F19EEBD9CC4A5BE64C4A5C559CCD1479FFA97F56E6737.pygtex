@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+no}{Rails}\PYG{o}{.}\PYG{n}{application}\PYG{o}{.}\PYG{n}{routes}\PYG{o}{.}\PYG{n}{draw} \PYG{k}{do}
+  \PYG{n}{resources} \PYG{l+s+ss}{:users}
+  \PYG{n}{resources} \PYG{l+s+ss}{:posts}
+
+  \PYG{n}{root} \PYG{l+s+s1}{\PYGZsq{}static\PYGZus{}pages\PYGZsh{}home\PYGZsq{}}
+  \PYG{c+c1}{\PYGZsh{} Send errors to root}
+  \PYG{n}{get} \PYG{l+s+s1}{\PYGZsq{}*path\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{redirect}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{end}
+\end{Verbatim}

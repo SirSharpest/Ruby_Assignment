@@ -1,4 +1,4 @@
-% Created 2017-10-21 Sat 23:34
+% Created 2017-10-28 Sat 22:36
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -19,6 +19,7 @@
 \usepackage{minted}
 \usepackage[margin=0.8in]{geometry}
 \usepackage{amssymb,amsmath}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{fancyhdr} %For headers and footers
 \pagestyle{fancy} %For headers and footers
 \usepackage{lastpage} %For getting page x of y
@@ -34,7 +35,7 @@
 \rfoot{\thepage\ of \pageref{LastPage}}
 \usepackage[parfill]{parskip}
 \usepackage{subfig}
-\hypersetup{colorlinks=true,linkcolor=black}
+\hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 \AtBeginEnvironment{minted}{%
 \renewcommand{\fcolorbox}[4][]{#4}}
 \usepackage{framed}
@@ -58,39 +59,58 @@
 \tableofcontents
 \clearpage
 
-
-\section{Introduction}
-\label{sec-1}
-
 \section{CSA Architecture}
-\label{sec-2}
+\label{sec-1}
+The Computer Science Alumni application aims to be relatively simple; it allows for users and posts 
+to be created, held in a database and persist across sessions and users; This project was made 
+following the specifications laid out in \cite{loftus17_requir_cs_alumn_applic}. 
 
-\subsection{User creation}
-\label{sec-2-1}
+It makes ample use of the Ruby on Rails framework, using generators to quickly template large sections
+of code as well as a Model View Controller (Model-2 variant) to organise the overarching project.
 
-\subsection{Post creation}
-\label{sec-2-2}
+The interaction and member variables of the two classes, User and Post can be
+ seen in Fig.\ref{fig:userposts}.
+
+\subsection{User}
+\label{sec-1-1}
+The User class exists in order to record the information of individuals using this web application.
+We use the data provided here in order to link information made in the Posts class back to Users
+where possible. 
+
+
+\subsection{Post}
+\label{sec-1-2}
+Posts is a simple class which has three attributes "title", "body" and "email". These allow for simple
+text based "broadcasts" to be made either anonymously or by a user, which is referenced by the "email"
+attribute. If the given email of the post matches with any in our Users table, then we create the link
+between the two.
 
 \subsection{Routes}
-\label{sec-2-3}
+\label{sec-1-3}
+Part of this application is having a functioning routing table, as seen in  Listing.\ref{lst:routes}, 
+this allows for the route '/' of our page to be a redirection to a static homepage. Additionally 
+an extra line has been added to redirect 404 errors back to the home page.
+
 \begin{listing}[H]
 \begin{minted}[]{ruby}
 Rails.application.routes.draw do
   resources :users
   resources :posts
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'posts#index'
+  root 'static_pages#home'
   # Send errors to root
   get '*path' => redirect('/')
-
 end
 \end{minted}
-\caption{x}
+\caption{\label{lst:routes}Routing}
 \end{listing}
 
 \subsection{Navigation}
-\label{sec-2-4}
+\label{sec-1-4}
+The CSA application provides a dynamic menu bar which (planned future functionality) changes the items
+in the menu, based on the authentication/credentials of the logged in user. Admin checking can be seen
+ in Listing.\ref{lst:navigation}
+
 \begin{listing}[H]
 \begin{minted}[]{ruby}
 primary.item :home, 'Home', '/home', highlights_on: /(^\/$)|(^\/home$)/
@@ -99,33 +119,42 @@ primary.item :profile, 'Profile', '/profile', if: Proc.new { is_admin? }
 primary.item :users, 'Users', users_path, if: Proc.new { is_admin? }
 primary.item :broadcasts, 'Broadcasts', '/broadcasts', if: Proc.new { is_admin? }
 \end{minted}
-\caption{x}
+\caption{\label{lst:navigation}Navigation items}
 \end{listing}
 
-\subsection{Application Controller}
-\label{sec-2-5}
+\subsection{Pagination}
+\label{sec-1-5}
+In order to filter for either too many users or posts on a single page Pagination has been added. 
+This modifies the user controller (Listing.\ref{lst:pagination}) in order to split and give multiple 
+selectable pages to the user, by using an additional Ruby Gem.
+
 \begin{listing}[H]
 \begin{minted}[]{ruby}
-# Make is_admin? a helper method available to view templates
-helper_method :is_admin?
-
-protected
-
-# Is the caller an admin user? Currently everyone is!
-# @return true if admin user else false
-def is_admin?
-  true
-end
+  # GET /users
+  # GET /users.json
+  def index
+    @users = User.paginate(page: params[:page],
+			   per_page: params[:per_page])
+	       .order('surname, forename')
+  end
+...
+  def set_current_page
+    @current_page = params[:page] || 1
+  end
 \end{minted}
-\caption{x}
+\caption{\label{lst:pagination}Modifying the user controller}
 \end{listing}
 
-\subsection{Layout.scss}
-\label{sec-2-6}
 
+\subsection{Layout.scss}
+\label{sec-1-6}
+For a global theme a \emph{scss} file has been used to change \emph{css} in commonly used parts of the application.
+For example a snippet shown in Listing.\ref{lst:scss} shows hover and selection being given to links 
+in the navigation bar.
+
+\begin{listing}[H]
 \begin{minted}[]{css}
 .navigation {
-
   a {
     color: #aa1111;
     text-decoration: none;
@@ -138,7 +167,6 @@ end
   .selected {
     background-color: #C5F1F9;
   }
-
   a:hover,
   a:active,
   a.here:link,
@@ -146,44 +174,55 @@ end
     color: #C811D8;
   }
 \end{minted}
+\caption{\label{lst:scss}Layout SCSS}
+\end{listing}
 
+\clearpage
+\section{MVC Model}
+\label{sec-2}
 
+\subsection{UML Diagrams}
+\label{sec-2-1}
 
-\section{{\bfseries\sffamily TODO} MVC Model}
-\label{sec-3}
-
-\subsection{{\bfseries\sffamily TODO} UML Diagram}
-\label{sec-3-1}
-\subsubsection{Database}
-\label{sec-3-1-1}
+\subsubsection{Overall class design}
+\label{sec-2-1-1}
 \begin{center}
 \begin{figure}[htb]
 \centering
-\includegraphics[width=4cm]{posts-users.png}
-\caption{Posts and Users UML}
+\includegraphics[width=10cm]{classdesign.png}
+\caption{\label{fig:classuml}Posts and Users UML}
 \end{figure}
 \end{center}
 
-\subsubsection{{\bfseries\sffamily TODO} What is the Model-2 Variant}
-\label{sec-3-1-2}
-\subsection{{\bfseries\sffamily TODO} Models}
-\label{sec-3-2}
-\subsection{{\bfseries\sffamily TODO} Views}
-\label{sec-3-3}
-\subsection{{\bfseries\sffamily TODO} Controls}
-\label{sec-3-4}
 
+\subsubsection{Database}
+\label{sec-2-1-2}
+\begin{center}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=3cm]{posts-users.png}
+\caption{\label{fig:userposts}Posts and Users UML}
+\end{figure}
+\end{center}
 
-\section{Database}
-\label{sec-4}
+\subsection{What is the Model-2 Variant}
+\label{sec-2-2}
+The model-2 variant of the model view controller, design pattern is one designed for 
+medium-large web-based applications \cite{Model1an89:online}.
 
-\subsection{{\bfseries\sffamily TODO} Database location}
-\label{sec-4-1}
+In this arch-type the server acts as the controller, the view is much more separated and independent
+from the controller, than MVC model 1. This makes it much easier to extend the application without
+having decentralised components lagging behind and causing issues \cite{javaWhat73:online}. 
 
-\subsection{{\bfseries\sffamily TODO} Migration Files}
-\label{sec-4-2}
-\begin{minted}[]{bash}
-rails db:migrate
-\end{minted}
+\section{Disclaimer}
+\label{sec-3}
+Covering image used sourced from \url{https://www.ruby-lang.org} \cite{RubyProg39:online}. Diagrams 
+made by myself. 
+
+Additionally I acknowledge that all information present in this document is my own work using knowledge
+gained from \cite{RubyonRa5:online,RubyProg39:online,javaWhat73:online,loftus17_requir_cs_alumn_applic,Model1an89:online}.
+
+\bibliographystyle{unsrt}
+\bibliography{assignment1}
 % Emacs 25.3.1 (Org mode 8.2.10)
 \end{document}

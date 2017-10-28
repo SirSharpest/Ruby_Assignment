@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{c+c1}{\PYGZsh{} GET /users}
+  \PYG{c+c1}{\PYGZsh{} GET /users.json}
+  \PYG{k}{def} \PYG{n+nf}{index}
+    \PYG{n+nv+vi}{@users} \PYG{o}{=} \PYG{n+no}{User}\PYG{o}{.}\PYG{n}{paginate}\PYG{p}{(}\PYG{l+s+ss}{page}\PYG{p}{:} \PYG{n}{params}\PYG{o}{[}\PYG{l+s+ss}{:page}\PYG{o}{]}\PYG{p}{,}
+			   \PYG{l+s+ss}{per\PYGZus{}page}\PYG{p}{:} \PYG{n}{params}\PYG{o}{[}\PYG{l+s+ss}{:per\PYGZus{}page}\PYG{o}{]}\PYG{p}{)}
+	       \PYG{o}{.}\PYG{n}{order}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}surname, forename\PYGZsq{}}\PYG{p}{)}
+  \PYG{k}{end}
+\PYG{o}{...}
+  \PYG{k}{def} \PYG{n+nf}{set\PYGZus{}current\PYGZus{}page}
+    \PYG{n+nv+vi}{@current\PYGZus{}page} \PYG{o}{=} \PYG{n}{params}\PYG{o}{[}\PYG{l+s+ss}{:page}\PYG{o}{]} \PYG{o}{||} \PYG{l+m+mi}{1}
+  \PYG{k}{end}
+\end{Verbatim}

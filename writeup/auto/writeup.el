@@ -4,7 +4,7 @@
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("article" "a4paper")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("inputenc" "utf8") ("fontenc" "T1") ("ulem" "normalem") ("geometry" "margin=0.8in") ("parskip" "parfill")))
+                     '(("inputenc" "utf8") ("fontenc" "T1") ("ulem" "normalem") ("geometry" "margin=0.8in") ("tocbibind" "nottoc" "numbib") ("parskip" "parfill")))
    (add-to-list 'LaTeX-verbatim-environments-local "minted")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
@@ -34,6 +34,7 @@
     "hyperref"
     "minted"
     "geometry"
+    "tocbibind"
     "fancyhdr"
     "lastpage"
     "parskip"
@@ -41,22 +42,25 @@
     "framed")
    (LaTeX-add-labels
     "sec-1"
+    "sec-1-1"
+    "sec-1-2"
+    "sec-1-3"
+    "lst:routes"
+    "sec-1-4"
+    "lst:navigation"
+    "sec-1-5"
+    "lst:pagination"
+    "sec-1-6"
+    "lst:scss"
     "sec-2"
     "sec-2-1"
+    "sec-2-1-1"
+    "fig:classuml"
+    "sec-2-1-2"
+    "fig:userposts"
     "sec-2-2"
-    "sec-2-3"
-    "sec-2-4"
-    "sec-2-5"
-    "sec-2-6"
-    "sec-3"
-    "sec-3-1"
-    "sec-3-1-1"
-    "sec-3-1-2"
-    "sec-3-2"
-    "sec-3-3"
-    "sec-3-4"
-    "sec-4"
-    "sec-4-1"
-    "sec-4-2"))
+    "sec-3")
+   (LaTeX-add-bibliographies
+    "assignment1"))
  :latex)
 

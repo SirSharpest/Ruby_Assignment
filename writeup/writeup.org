@@ -5,6 +5,7 @@
 #+LaTeX_CLASS_OPTIONS: [a4paper]
 #+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
 #+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage[nottoc,numbib]{tocbibind}
 #+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
 #+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
 #+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
@@ -20,8 +21,9 @@
 #+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
 #+LaTeX_HEADER: \usepackage[parfill]{parskip}
 #+LaTeX_HEADER:\usepackage{subfig}
-#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 #+LATEX_HEADER_EXTRA:  \usepackage{framed}
+
 
 #+LATEX_HEADER: \AtBeginEnvironment{minted}{%
 #+LATEX_HEADER:  \renewcommand{\fcolorbox}[4][]{#4}}
@@ -37,37 +39,55 @@
 #+LATEX: \clearpage
 #+LATEX: \tableofcontents
 #+LATEX: \clearpage
-
-
-* Introduction 
    
 * CSA Architecture 
+The Computer Science Alumni application aims to be relatively simple; it allows for users and posts 
+to be created, held in a database and persist across sessions and users; This project was made 
+following the specifications laid out in cite:loftus17_requir_cs_alumn_applic. 
 
-** TODO User creation
-- Command ran
-- File outputs
-- Diagram of files made
-** TODO Post creation
-- Command ran
-- File outputs
-- Diagram of files made
+It makes ample use of the Ruby on Rails framework, using generators to quickly template large sections
+of code as well as a Model View Controller (Model-2 variant) to organise the overarching project.
+
+The interaction and member variables of the two classes, User and Post can be
+ seen in Fig.\ref{fig:userposts}.
+
+** User
+The User class exists in order to record the information of individuals using this web application.
+We use the data provided here in order to link information made in the Posts class back to Users
+where possible. 
+
+
+** Post 
+Posts is a simple class which has three attributes "title", "body" and "email". These allow for simple
+text based "broadcasts" to be made either anonymously or by a user, which is referenced by the "email"
+attribute. If the given email of the post matches with any in our Users table, then we create the link
+between the two.
 
 ** Routes 
-#+CAPTION: x
+Part of this application is having a functioning routing table, as seen in  Listing.\ref{lst:routes}, 
+this allows for the route '/' of our page to be a redirection to a static homepage. Additionally 
+an extra line has been added to redirect 404 errors back to the home page.
+
+#+CAPTION: Routing
+#+LABEL: lst:routes
 #+BEGIN_SRC RUBY
 Rails.application.routes.draw do
   resources :users
   resources :posts
 
-  root 'posts#index'
+  root 'static_pages#home'
   # Send errors to root
   get '*path' => redirect('/')
-
 end
 #+END_SRC
 
 ** Navigation
-#+CAPTION: x
+The CSA application provides a dynamic menu bar which (planned future functionality) changes the items
+in the menu, based on the authentication/credentials of the logged in user. Admin checking can be seen
+ in Listing.\ref{lst:navigation}
+
+#+CAPTION: Navigation items
+#+LABEL: lst:navigation
 #+BEGIN_SRC RUBY
     primary.item :home, 'Home', '/home', highlights_on: /(^\/$)|(^\/home$)/
     primary.item :jobs, 'Jobs', '/jobs'
@@ -77,7 +97,12 @@ end
 #+END_SRC
 
 ** Pagination 
+In order to filter for either too many users or posts on a single page Pagination has been added. 
+This modifies the user controller (Listing.\ref{lst:pagination}) in order to split and give multiple 
+selectable pages to the user, by using an additional Ruby Gem.
+
 #+CAPTION: Modifying the user controller
+#+LABEL: lst:pagination
 #+BEGIN_SRC RUBY
   # GET /users
   # GET /users.json
@@ -86,33 +111,20 @@ end
                            per_page: params[:per_page])
                .order('surname, forename')
   end
-
 ...
-
   def set_current_page
     @current_page = params[:page] || 1
   end
 #+END_SRC
 
 
-** Application Controller
-#+CAPTION: x
-#+BEGIN_SRC RUBY
-  # Make is_admin? a helper method available to view templates
-  helper_method :is_admin?
-
-  protected
-
-  # Is the caller an admin user? Currently everyone is!
-  # @return true if admin user else false
-  def is_admin?
-    true
-  end
-
-#+END_SRC
-
 ** Layout.scss
-#+CAPTION: x
+For a global theme a /scss/ file has been used to change /css/ in commonly used parts of the application.
+For example a snippet shown in Listing.\ref{lst:scss} shows hover and selection being given to links 
+in the navigation bar.
+
+#+CAPTION: Layout SCSS
+#+LABEL: lst:scss
 #+BEGIN_SRC CSS
 .navigation {
   a {
@@ -135,16 +147,67 @@ end
   }
 #+END_SRC
 
-   
-* TODO MVC Model 
-  
-** TODO UML Diagram
+\clearpage
+* MVC Model 
+
+** UML Diagrams
+
+*** Overall class design
+#+NAME: fig:classuml
+#+begin_src plantuml :results file :file classdesign.png
+Actor Browser
+
+Frame Model {
+() Posts
+() Users
+}
+
+Database sqlite3 {
+
+
+
+}
+
+Frame Controller  {
+() Posts_Controller
+() Users_Controller
+() Static_Pages_Controller
+}
+
+Frame View {
+() home
+() posts
+() users
+}
+
+
+
+Browser <-- View : http response
+
+Browser ---> Controller : http request
+
+Controller -> Model
+
+Controller --> View
+
+Model <--> sqlite3 : data transfer
+#+end_src
+
+#+BEGIN_CENTER
+#+CAPTION: Posts and Users UML
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:classuml
+#+RESULTS: fig:classuml
+#+END_CENTER
+
+
 *** Database
 #+NAME: fig:uml
 #+begin_src plantuml :results file :file posts-users.png
 class Posts{
   +title :string
   +body :string
+  +email :string
 }
 
 class Users{
@@ -156,27 +219,31 @@ class Users{
   +jobs :boolean
 }
 
-Posts "*" -- "0..1" Users
+Posts "*" --- "0..1" Users
 
 #+end_src
 
 #+BEGIN_CENTER
 #+CAPTION: Posts and Users UML
-#+ATTR_LATEX: :width 4cm
+#+ATTR_LATEX: :width 3cm 
+#+NAME: fig:userposts
 #+RESULTS: fig:uml
 #+END_CENTER
 
-*** TODO What is the Model-2 Variant
-** TODO Models
-** TODO Views
-** TODO Controls
+** What is the Model-2 Variant
+The model-2 variant of the model view controller, design pattern is one designed for 
+medium-large web-based applications cite:Model1an89:online.
 
+In this arch-type the server acts as the controller, the view is much more separated and independent
+from the controller, than MVC model 1. This makes it much easier to extend the application without
+having decentralised components lagging behind and causing issues cite:javaWhat73:online. 
 
-* Database
+* Disclaimer
+Covering image used sourced from https://www.ruby-lang.org cite:RubyProg39:online. Diagrams 
+made by myself. 
 
-** TODO Database location
+Additionally I acknowledge that all information present in this document is my own work using knowledge
+gained from cite:RubyonRa5:online,RubyProg39:online,javaWhat73:online,loftus17_requir_cs_alumn_applic,Model1an89:online.
 
-** TODO Migration Files
-#+BEGIN_SRC BASH
-rails db:migrate
-#+END_SRC 
+bibliographystyle:unsrt
+bibliography:assignment1.bib
